@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcuator using JS</title>
+    <style>
+        button:nth-child(1-2) {
+            display: block;
+        }
+        body{
+            height: 100vh;
+            border: 2px solid red;
+            display: flex;
+            justify-content: center;align-items: center;
+            background-color: rgb(159, 101, 139);
+        }
+        .container{
+            width:28vw;
+            height: 64vh;
+            border: 2px solid red;
+            display: inline-block;
+            padding: 35px;
+            border-radius: 10px;
+            background-color: burlywood;
+        }.container button{ 
+            width: 6vw;
+            height: 10vh;
+            margin-top: 5px;
+            font-size: 2vw;
+            font-weight: bold;
+            border-radius: 5px;
+            user-select: none;
+            border: none;
+        }
+        .container button:hover{
+            background-color: rgb(175, 151, 116);
+            cursor: pointer;
+        }
+        .container input{
+            width: 25vw;
+            height: 2rem;
+            font-size: 1.5em;font-weight: bold;
+            border-radius: 6px;
+            background-color: aliceblue;
+            border-style:outset;
+        }
+        .non-numeric{
+            background-color: rgb(173, 197, 197);
+        } 
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+
+       
+        <input class="non-numeric" class="input" id="input" type="text" readonly> 
+        
+         <br>
+        <button class="non-numeric" id="clear">Clear</button>
+        <button class="non-numeric" id="sqrt">Sqrt</button>
+        <button class="non-numeric" id="div">/</button>
+
+        <br>
+        <button id="seven">7</button>
+        <button id="eight">8</button>
+        <button id="nine">9</button>
+        <button class="non-numeric" id="mul">x</button>
+        <br>
+        <button id="four">4</button>
+        <button id="five">5</button>
+        <button id="six">6</button>
+        <button class="non-numeric" id="minus">-</button>
+        <br>
+        <button class="number" id="one">1</button>
+        <button class="number" id="two">2</button>
+        <button class="number" id="three">3</button>
+        <button class="non-numeric" id="plus">+</button> <br>
+        <button class="non-numeric" id="remove">C</button>
+        <button id="zero">0</button>
+        <button class="non-numeric" id="decimal">.</button>
+        <button class="non-numeric" id="equal">=</button>
+    </div>
+    <script>
+        let seven = document.getElementById('seven');
+        let eight = document.getElementById('eight');
+        let nine = document.getElementById('nine');
+        let four = document.getElementById('four');
+        let five = document.getElementById('five');
+        let six = document.getElementById('six');
+        let one = document.getElementById('one');
+        let two = document.getElementById('two');
+        let three = document.getElementById('three');
+        let mul = document.getElementById('mul');
+        let minus = document.getElementById('minus');
+        let plus = document.getElementById('plus');
+        let zero = document.getElementById('zero');
+        let decimal = document.getElementById('decimal');
+        let equal = document.getElementById('equal');
+        let clear = document.getElementById('clear'); 
+        let remove= document.getElementById('remove'); 
+        let sqrt = document.getElementById('sqrt');
+        let div = document.getElementById('div');
+        let input = document.getElementById('input');
+        let input2 = document.getElementById('input2');
+     //   let hasoperator = false;
+        seven.addEventListener('click',()=>{
+            input.value += seven.innerHTML;
+        });
+        eight.addEventListener('click',()=>{
+            input.value += eight.innerHTML;
+        });
+        nine.addEventListener('click',()=>{
+             input.value += nine.innerHTML;
+         });
+         four.addEventListener('click',()=>{
+             input.value += four.innerHTML;
+         }); 
+         five.addEventListener('click',()=>{
+             input.value += five.innerHTML;
+         }); 
+         six.addEventListener('click',()=>{
+             input.value += six.innerHTML;
+         }); 
+         one.addEventListener('click',()=>{
+             input.value += one.innerHTML;
+         }); 
+         two.addEventListener('click',()=>{
+             input.value += two.innerHTML;
+         }); 
+         three.addEventListener('click',()=>{
+             input.value += three.innerHTML;
+         }); 
+        // let flag=0;
+         plus.addEventListener('click',()=>{
+            if (Number(input.value[input.value.length-1])){
+                input.value+=plus.innerHTML;
+            }
+            else return 0;
+         }); 
+          
+         minus.addEventListener('click',()=>{
+            if (Number(input.value[input.value.length-1])){
+                input.value+=minus.innerHTML;
+            }
+            else return 0;
+             
+         });
+          
+         mul.addEventListener('click',()=>{ 
+             if (Number(input.value[input.value.length-1])){
+                input.value+=mul.innerHTML.replace('x','*');
+            }
+            else return 0;
+         });
+         
+         
+         decimal.addEventListener('click',()=>{
+            if (Number(input.value[input.value.length-1])){
+                input.value+=decimal.innerHTML.replace('x','*');
+            }
+            });
+            clear.addEventListener('click',()=>{
+                input.value = "";
+            });
+            zero.addEventListener('click',()=>{
+                input.value +=zero.innerHTML ;
+            });
+            let inputvalue = input.value;
+            remove.addEventListener('click',()=>{
+                   inputvalue = input.value;
+                 if(inputvalue.length>0){ 
+                    inputvalue= inputvalue.slice(0,-1);console.log(inputvalue);
+                    input.value = inputvalue; 
+                 }
+            });
+            sqrt.addEventListener('click',()=>{
+                input.value = Math.sqrt(input.value);  
+            });
+            div.addEventListener('click',()=>{
+                input.value +=div.innerHTML;
+    
+            });
+            equal.addEventListener('click',()=>{  
+                 
+                 input.value += `= ${eval(input.value)}`;
+
+             }) ;
+             
+    </script>
+
+
+</body>
+
+</html>
